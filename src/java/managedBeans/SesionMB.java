@@ -8,6 +8,7 @@ import enterpriseBeans.ClienteEJB;
 import entidades.Cliente;
 import entidades.Libro;
 import static entidades.LibroVendido_.pedido;
+import entidades.Pedido;
 import entidades.Tema;
 import java.io.Serializable;
 import java.util.Calendar;
@@ -66,7 +67,10 @@ public class SesionMB implements Serializable {
         cliente = null;
         return "inicio";
     }
-
+    public String editarperfil(){
+        clienteEJB.editaperfil(cliente, nombre, direccion, mail, login, password, password2);
+        return "inicio";
+    }
     public String registra() {
         errorMessage = clienteEJB.registra(nombre, direccion, mail, login, password, password2);
         if (errorMessage.equals("none")) {
@@ -115,9 +119,9 @@ public class SesionMB implements Serializable {
     public List<Tema> getTemas() {
         return catalogoEJB.todosLosTemas();
     }
-    public String deletePedido(){
-        CarroCompraEJB.eliminaPedido(cliente, pedido);
-        return "inicio";
+    public String deletePedido(Pedido pedido){
+        carroCompraEJB.eliminaPedido(cliente, pedido);
+        return "listaPedidos";
     }
     public String verTema(Tema tema) {
         this.tema = tema;

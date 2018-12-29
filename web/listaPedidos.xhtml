@@ -14,7 +14,7 @@
             <br/>    
             <br/>    
             <br/>    
-            <h2>Pedidos de #{sesionMB.nombre}:</h2>        
+            <h2>Pedidos #{sesionMB.nombre}:</h2>        
             <br/>
             <h:dataTable rendered="#{sesionMB.cliente.hayPedidos}" value="#{sesionMB.cliente.pedidos}" var="pedido" cellspacing="30" >     
                 <h:column>
@@ -35,7 +35,7 @@
                     </f:facet>
                     <h:outputText value="#{pedido.estado}"/>
                     <h:form>
-                        <h:commandLink value="[X]" action="#{SesionMB.CarroCompraEJB.eliminaPedido}"/>
+                        <h:commandLink rendered="#{pedido.isPendiente()}" value="[X]" action="#{sesionMB.deletePedido(pedido)}"/>
                     </h:form>
                 </h:column>            
             </h:dataTable>   

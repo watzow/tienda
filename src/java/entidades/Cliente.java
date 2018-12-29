@@ -29,7 +29,7 @@ public class Cliente implements Serializable {
     private List<Grupo> grupos = new ArrayList();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList();
-
+    private List<Critica> criticas = new ArrayList<>();
     public String getLogin() {
         return login;
     }

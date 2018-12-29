@@ -53,11 +53,11 @@ public class CarroCompraEJB {
         
         for (LibroVendido librovendido : pedido.getLibros()){
             Libro libro = librovendido.getLibro();
-            libro.incInventario(Math.max(libro.getInventario(), librovendido.getCantidad()));
+            libro.incInventario(librovendido.getCantidad());
             em.merge(libro);
                        
         }    
-        cliente.getPedidos().remove(pedido);
+        cliente.getPedidos().remove(pedido);      
         em.merge(cliente);
     }
 }

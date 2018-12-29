@@ -25,7 +25,9 @@
                     <h:commandLink  value="Catálogo"  action="listaTemas"/>                         
                     <h:commandLink rendered="#{sesionMB.logged}" value="Ver pedidos"  action="listaPedidos"/>     
                     <h:commandLink rendered="#{!sesionMB.logged}" value="Login"  action="login"/>       
-                    <h:commandLink rendered="#{sesionMB.logged}" value="Logout"  action="#{sesionMB.logout()}"/>                     
+                    <h:commandLink rendered="#{sesionMB.logged}" value="Logout"  action="#{sesionMB.logout()}"/> 
+                    <h:commandLink rendered="#{sesionMB.logged}" value="Editar perfil"  action="editaPerfil"/>     
+                    
                 </h:panelGrid>
             </h:form>
             <br/>       

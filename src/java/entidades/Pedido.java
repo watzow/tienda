@@ -24,7 +24,7 @@ public class Pedido implements Serializable {
     private Long id;
     @ManyToOne
     private Cliente cliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, mappedBy = "pedido")
     private List<LibroVendido> libros= new ArrayList();
     private String fecha;
     private double importe;
@@ -73,7 +73,9 @@ public class Pedido implements Serializable {
     public void setImporte(double importe) {
         this.importe = importe;
     }
-
+    public boolean isPendiente(){
+        return estado.equals("pendiente");
+    }
     public String getEstado() {
         return estado;
     }
