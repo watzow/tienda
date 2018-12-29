@@ -74,7 +74,8 @@ public class ClienteEJB {
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
         em.merge(cliente);
-        return "edicionIncorrecta";
+        return "edicionCorrecta";
+
     }    
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
