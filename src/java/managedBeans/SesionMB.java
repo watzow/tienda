@@ -8,7 +8,6 @@ import enterpriseBeans.ClienteEJB;
 import entidades.Cliente;
 import entidades.Libro;
 import static entidades.LibroVendido_.pedido;
-import entidades.Pedido;
 import entidades.Tema;
 import java.io.Serializable;
 import java.util.Calendar;
