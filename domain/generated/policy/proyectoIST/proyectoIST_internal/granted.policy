@@ -1,4 +1,4 @@
-/* AUTOMATICALLY GENERATED ON Sat Dec 29 09:11:53 CET 2018*/
+/* AUTOMATICALLY GENERATED ON Sat Dec 29 10:12:27 CET 2018*/
 /* DO NOT EDIT */
 
 grant {
@@ -8,8 +8,8 @@ grant {
   permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", "confirmaPedido,Local,entidades.Cliente,POJOs.CarroCompra";
   permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "editaperfil,Local,entidades.Cliente,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String";
   permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "login,Local,java.lang.String,java.lang.String";
-  permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", ",Local";
   permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "buscarLibro,Local,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", ",Local";
   permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", "eliminaPedido,Local,entidades.Cliente,entidades.Pedido";
   permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "todosLosLibros,Local,";
 };
