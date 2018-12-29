@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Busqueda de libros</title>
+    </h:head>
+    <h:body> 
+        <center>
+            <br/>
+            <h:graphicImage  width="300" value="resources/images/libros.jpg" alt="libros"/>
+            <br/>
+            <h1>Tienda de libros</h1>   
+            <h:outputLabel   rendered="#{sesionMB.logged}" value="Usuario: #{sesionMB.cliente.nombre},         login en #{sesionMB.loginTime}"/>        
+            <br/>    
+            <br/>    
+            <br/>   
+            <h:form>                        
+                <h:outputText value="Palabras clave: " />
+                <h:inputText  value="#{sesionMB.libroBusqueda}" maxlength="30" size="30"/>
+                <br></br>
+                <br></br>
+                <div style="display: inline-block; text-align: center; border: 2px solid #0000FF; width: 300px;">
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por titulo" action="#{sesionMB.buscar('titulo')}" /><br></br>
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por autor" action="#{sesionMB.buscar('autor')}" /><br></br>     
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por tema" action="#{sesionMB.buscar('tema')}" /><br></br>      
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por año" action="#{sesionMB.buscar('anyo')}" /><br></br>     
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por ISBN" action="#{sesionMB.buscar('ISBN')}" /><br></br>      
+                   <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Buscar por editorial" action="#{sesionMB.buscar('editorial')}" /><br></br>
+                </div>
+                <h:panelGrid columns="3" cellspacing="30">
+                    <h:graphicImage  width="100" value="resources/images/carrito.jpg" alt="carrito"/>
+                    <h:outputText   value="(#{sesionMB.carroCompra.numLibrosEnCarro} articulos)"  />   
+                    <h:commandLink   rendered="#{!sesionMB.carroCompra.vacio}" value="Ver"  action="carroCompra"/>     
+                </h:panelGrid>
+                <h:panelGrid columns="3" cellspacing="30">
+                    <h:commandLink rendered="#{sesionMB.logged}" value="Ver pedidos"  action="listaPedidos"/>                         
+                    <h:commandLink  value="Catálogo"  action="listaTemas"/>
+                    <h:commandLink  value="Inicio"  action="inicio"/>
+                    <h:commandLink rendered="#{!sesionMB.logged}" value="Login"  action="login"/>     
+                    <h:commandLink rendered="#{sesionMB.logged}" value="Logout"  action="#{sesionMB.logout()}"/>                 
+                </h:panelGrid>
+            </h:form>
+            <br/>
+            <i>IST: tienda de libros</i>
+        </center>      
+    </h:body>
+</html>

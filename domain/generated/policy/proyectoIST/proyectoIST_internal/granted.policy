@@ -1,0 +1,17 @@
+/* AUTOMATICALLY GENERATED ON Sat Dec 29 04:00:35 CET 2018*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "logout,Local,";
+  permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "registra,Local,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "todosLosTemas,Local,";
+  permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "login,Local,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "buscarLibro,Local,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "todosLosLibros,Local,";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "ClienteEJB", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "CatalogoEJB", "**";
+};
+
