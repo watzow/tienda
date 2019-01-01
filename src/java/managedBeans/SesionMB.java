@@ -37,6 +37,13 @@ public class SesionMB implements Serializable {
     private String password;
     private String password2;
     private String loginTime;
+    
+    private String nombre_edit;
+    private String mail_edit;
+    private String direccion_edit;
+    private String password_edit;
+    private String password2_edit;
+    
     @EJB
     private CatalogoEJB catalogoEJB;
     private Tema tema;
@@ -79,7 +86,14 @@ public class SesionMB implements Serializable {
             return ("registroError");
         }
     }
-
+    public String edita(){
+        Cliente c=clienteEJB.editaperfil(cliente, nombre_edit, direccion_edit, mail_edit, password_edit, password2_edit)
+        if(c!=null){
+            cliente=c;
+            return "edicionCorrecta";
+        }
+        return "edicionIncorrecta";
+}
     public boolean isLogged() {
         return cliente != null;
     }
