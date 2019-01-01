@@ -53,10 +53,10 @@ public class ClienteEJB {
     }
     public String editaperfil(Cliente cliente, String nombre, String direccion, String mail, String login, String password, String password2) {
         if(checkUsuario(login)){
-            return "edicionincorrecta";
+            return "edicionIncorrecta";
         }
         if(checkMail(mail)){
-            return "edicionincorrecta";
+            return "edicionIncorrecta";
         }
         if (!nombre.equals("") && nombre!=null) {                
             cliente.setNombre(nombre);
@@ -73,7 +73,8 @@ public class ClienteEJB {
         if (!password.equals("") && password!=null){
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
-        return "edicionincorrecta";
+        em.merge(cliente);
+        return "edicionCorrecta";
     }    
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
