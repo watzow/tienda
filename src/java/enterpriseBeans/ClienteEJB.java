@@ -47,7 +47,7 @@ public class ClienteEJB {
         return tquery.getResultList().isEmpty() && mail.indexOf(" ")==-1;
     }
     public Cliente editaperfil(Cliente cliente, String nombre, String direccion, String mail, String password, String password2) {
-        if(checkMail(mail)){
+        if(!checkMail(mail) || !password.equals(password2)){
             return null;
         }
         if (!nombre.equals("") && nombre!=null) {                
