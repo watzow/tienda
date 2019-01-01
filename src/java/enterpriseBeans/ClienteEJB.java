@@ -42,30 +42,19 @@ public class ClienteEJB {
         } catch (ServletException e) {
         }
     }
-    
-    private boolean checkUsuario(String login){
-        TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.login='" + login + "'", Cliente.class);
-        return tquery.getResultList().isEmpty() && login.indexOf(" ")==-1;
-    }
     private boolean checkMail(String mail){
         TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.mail='" + mail + "'", Cliente.class);
         return tquery.getResultList().isEmpty() && mail.indexOf(" ")==-1;
     }
-    public String editaperfil(Cliente cliente, String nombre, String direccion, String mail, String login, String password, String password2) {
-        if(checkUsuario(login)){
-            return "edicionIncorrecta";
-        }
+    public Cliente editaperfil(Cliente cliente, String nombre, String direccion, String mail, String password, String password2) {
         if(checkMail(mail)){
-            return "edicionIncorrecta";
+            return null;
         }
         if (!nombre.equals("") && nombre!=null) {                
             cliente.setNombre(nombre);
         }
         if (!direccion.equals("") && direccion!=null){
             cliente.setDireccion(direccion);
-        }
-        if (!login.equals("") && login!=null){
-            cliente.setLogin(login);
         }
         if (!mail.equals("") && mail!=null){
             cliente.setMail(mail);
@@ -74,7 +63,7 @@ public class ClienteEJB {
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
         em.merge(cliente);
-        return "edicionCorrecta";
+        return cliente;
     }    
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
