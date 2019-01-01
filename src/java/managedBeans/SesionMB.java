@@ -74,10 +74,6 @@ public class SesionMB implements Serializable {
         cliente = null;
         return "inicio";
     }
-    public String editarperfil(){
-        clienteEJB.editaperfil(cliente, nombre, direccion, mail, login, password, password2);
-        return "inicio";
-    }
     public String registra() {
         errorMessage = clienteEJB.registra(nombre, direccion, mail, login, password, password2);
         if (errorMessage.equals("none")) {
