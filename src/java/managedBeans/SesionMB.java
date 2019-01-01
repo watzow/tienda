@@ -86,6 +86,11 @@ public class SesionMB implements Serializable {
         Cliente c=clienteEJB.editaperfil(cliente, nombre_edit, direccion_edit, mail_edit, password_edit, password2_edit)
         if(c!=null){
             cliente=c;
+            nombre= nombre_edit;
+            mail= mail_edit;
+            direccion= direccion_edit;
+            password= password_edit;
+            password2= password2_edit;
             return "edicionCorrecta";
         }
         return "edicionIncorrecta";
@@ -195,11 +200,48 @@ public class SesionMB implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    
     public String getLoginTime() {
         return loginTime;
     }
+    public String getNombre_edit() {
+        return nombre_edit;
+    }
 
+    public void setNombre_edit(String nombre_edit) {
+        this.nombre_edit = nombre_edit;
+    }
+    public String getPassword_edit() {
+        return password_edit;
+    }
+
+    public void setPassword_edit(String password_edit) {
+        this.password_edit = password_edit;
+    }
+
+    public String getPassword2_edit() {
+        return password2_edit;
+    }
+
+    public void setPassword2_edit(String password2_edit) {
+        this.password2_edit = password2_edit;
+    }
+
+    public String getMail_edit() {
+        return mail_edit;
+    }
+
+    public void setMail_edit(String mail_edit) {
+        this.mail = mail_edit;
+    }
+
+    public String getDireccion_edit() {
+        return direccion_edit;
+    }
+
+    public void setDireccion_edit(String direccion_edit) {
+        this.direccion_edit = direccion_edit;
+    }
     public Tema getTema() {
         return tema;
     }
