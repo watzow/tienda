@@ -83,7 +83,7 @@ public class SesionMB implements Serializable {
         }
     }
     public String edita(){
-        Cliente c=clienteEJB.editaperfil(cliente, nombre_edit, direccion_edit, mail_edit, password_edit, password2_edit)
+        Cliente c=clienteEJB.editaperfil(cliente, nombre_edit, direccion_edit, mail_edit, password_edit, password2_edit);
         if(c!=null){
             cliente=c;
             nombre= nombre_edit;
@@ -232,7 +232,7 @@ public class SesionMB implements Serializable {
     }
 
     public void setMail_edit(String mail_edit) {
-        this.mail = mail_edit;
+        this.mail_edit = mail_edit;
     }
 
     public String getDireccion_edit() {
