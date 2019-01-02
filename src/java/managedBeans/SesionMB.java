@@ -232,7 +232,7 @@ public class SesionMB implements Serializable {
     }
 
     public void setMail_edit(String mail_edit) {
-        this.mail = mail_edit;
+        this.mail_edit = mail_edit;
     }
 
     public String getDireccion_edit() {
