@@ -37,6 +37,17 @@ public class Libro implements Serializable {
     @Column(nullable = true)
     private String foto;
 
+    
+    
+    public List<Critica> getCriticas() {
+        return criticas;
+    }
+
+    
+    public void setCriticas(List<Critica> criticas) {
+        this.criticas = criticas;
+    }
+    
     public Long getId() {
         return id;
     }

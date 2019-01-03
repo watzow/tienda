@@ -9,7 +9,6 @@ import entidades.Pedido;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -30,6 +30,17 @@ public class Cliente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList();
     private List<Critica> criticas = new ArrayList<>();
+    
+    
+    public List<Critica> getCriticas() {
+        return criticas;
+    }
+
+    
+    public void setCriticas(List<Critica> criticas) {
+        this.criticas = criticas;
+    }
+    
     public String getLogin() {
         return login;
     }

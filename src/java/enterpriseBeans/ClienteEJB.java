@@ -42,40 +42,31 @@ public class ClienteEJB {
         } catch (ServletException e) {
         }
     }
-    
-    private boolean checkUsuario(String login){
-        TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.login='" + login + "'", Cliente.class);
-        return tquery.getResultList().isEmpty() && login.indexOf(" ")==-1;
-    }
     private boolean checkMail(String mail){
+        if (mail==null || mail.equals("")){
+            return true;
+        }
         TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.mail='" + mail + "'", Cliente.class);
         return tquery.getResultList().isEmpty() && mail.indexOf(" ")==-1;
     }
-    public String editaperfil(Cliente cliente, String nombre, String direccion, String mail, String login, String password, String password2) {
-        if(checkUsuario(login)){
-            return "edicionIncorrecta";
+    public Cliente editaperfil(Cliente cliente, String nombre, String direccion, String mail, String password, String password2) {
+        if(!checkMail(mail) || !password.equals(password2)){
+            return null;
         }
-        if(checkMail(mail)){
-            return "edicionIncorrecta";
-        }
-        if (!nombre.equals("") && nombre!=null) {                
+        if ( nombre!=null && !nombre.equals("") ) {                
             cliente.setNombre(nombre);
         }
-        if (!direccion.equals("") && direccion!=null){
+        if (direccion!=null && !direccion.equals("")){
             cliente.setDireccion(direccion);
         }
-        if (!login.equals("") && login!=null){
-            cliente.setLogin(login);
-        }
-        if (!mail.equals("") && mail!=null){
+        if (mail!=null && !mail.equals("")){
             cliente.setMail(mail);
         }    
-        if (!password.equals("") && password!=null){
+        if (password!=null && !password.equals("")){
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
         em.merge(cliente);
-        return "edicionCorrecta";
-
+        return cliente;
     }    
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
