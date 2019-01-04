@@ -46,9 +46,6 @@ public class ClienteEJB {
         }
     }
     private boolean checkMail(String mail){
-        if (mail==null || mail.equals("")){
-            return true;
-        }
         TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.mail='" + mail + "'", Cliente.class);
         return tquery.getResultList().isEmpty() && mail.indexOf(" ")==-1;
     }
@@ -56,21 +53,21 @@ public class ClienteEJB {
         if(!checkMail(mail) || !password.equals(password2)){
             return null;
         }
-        if ( nombre!=null && !nombre.equals("") ) {                
+        if (!nombre.equals("") && nombre!=null) {                
             cliente.setNombre(nombre);
         }
-        if (direccion!=null && !direccion.equals("")){
+        if (!direccion.equals("") && direccion!=null){
             cliente.setDireccion(direccion);
         }
-        if (mail!=null && !mail.equals("")){
+        if (!mail.equals("") && mail!=null){
             cliente.setMail(mail);
         }    
-        if (password!=null && !password.equals("")){
+        if (!password.equals("") && password!=null){
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
         em.merge(cliente);
         return cliente;
-    }  
+    }    
     
     public boolean checkVendido(Libro libro){
         TypedQuery<LibroVendido> query1 = em.createQuery("SELECT c FROM LibroVendido c ", LibroVendido.class);
@@ -83,6 +80,9 @@ public class ClienteEJB {
         critica.setTexto(texto);
     }
     
+
+    
+
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
             return "El nombre no puede estar en blanco";

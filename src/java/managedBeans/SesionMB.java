@@ -44,8 +44,10 @@ public class SesionMB implements Serializable {
     private String password_edit;
     private String password2_edit;
     
+
     private String texto;
     private Critica critica;
+
     @EJB
     private CatalogoEJB catalogoEJB;
     private Tema tema;
@@ -219,12 +221,14 @@ public class SesionMB implements Serializable {
         return nombre_edit;
     }
 
+
     public void setNombre_edit(String nombre_edit) {
         this.nombre_edit = nombre_edit;
     }
     public String getPassword_edit() {
         return password_edit;
     }
+  
 
     public void setPassword_edit(String password_edit) {
         this.password_edit = password_edit;
