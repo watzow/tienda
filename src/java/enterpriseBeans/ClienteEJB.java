@@ -2,6 +2,9 @@ package enterpriseBeans;
 
 import entidades.Cliente;
 import entidades.Grupo;
+import entidades.Libro;
+import entidades.LibroVendido;
+import entidades.Critica;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -67,7 +70,19 @@ public class ClienteEJB {
         }
         em.merge(cliente);
         return cliente;
-    }    
+    }  
+    
+    public boolean checkVendido(Libro libro){
+        TypedQuery<LibroVendido> query1 = em.createQuery("SELECT c FROM LibroVendido c ", LibroVendido.class);
+        int indice= query1.getResultList().indexOf(libro);
+
+        return indice!=-1;
+    }
+    
+    public void comentar(Critica critica, Cliente cliente, Libro libro, String texto){
+        critica.setTexto(texto);
+    }
+    
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
             return "El nombre no puede estar en blanco";

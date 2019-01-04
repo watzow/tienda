@@ -6,6 +6,7 @@ import enterpriseBeans.CarroCompraEJB;
 import enterpriseBeans.CatalogoEJB;
 import enterpriseBeans.ClienteEJB;
 import entidades.Cliente;
+import entidades.Critica;
 import entidades.Libro;
 import entidades.Pedido;
 import entidades.Tema;
@@ -43,6 +44,8 @@ public class SesionMB implements Serializable {
     private String password_edit;
     private String password2_edit;
     
+    private String texto;
+    private Critica critica;
     @EJB
     private CatalogoEJB catalogoEJB;
     private Tema tema;
@@ -107,7 +110,16 @@ public class SesionMB implements Serializable {
         carroCompra.vacia();
         return "listaTemas";
     }
-
+    
+    public boolean librocomprado(){
+        return clienteEJB.checkVendido(libro);
+    }
+    
+    public String critica(){
+        clienteEJB.comentar(critica,cliente, libro, texto);
+        return "detallesLibro";
+    }
+    
     public String confirmaPedido() {
         carroCompraEJB.confirmaPedido(cliente,carroCompra);
         return "listaPedidos";
