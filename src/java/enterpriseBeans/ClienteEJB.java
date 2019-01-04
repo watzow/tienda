@@ -76,8 +76,9 @@ public class ClienteEJB {
         return indice!=-1;
     }
     
-    public void comentar(Critica critica, Cliente cliente, Libro libro, String texto){
-        critica.setTexto(texto);
+    public void comentar(Cliente cliente, Libro libro, String texto){
+        Critica critica= new Critica();
+        critica.setTexto(cliente.getNombre()+": "+ texto);
     }
     
 

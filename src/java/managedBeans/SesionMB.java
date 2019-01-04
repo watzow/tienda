@@ -118,7 +118,7 @@ public class SesionMB implements Serializable {
     }
     
     public String critica(){
-        clienteEJB.comentar(critica,cliente, libro, texto);
+        clienteEJB.comentar(cliente, libro, texto);
         return "detallesLibro";
     }
     
