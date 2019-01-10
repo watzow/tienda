@@ -44,7 +44,7 @@ public class SesionMB implements Serializable {
     private String password_edit;
     private String password2_edit;
     
-
+    private String textocritica;
     private String texto;
     private Critica critica;
 
@@ -118,7 +118,7 @@ public class SesionMB implements Serializable {
     }
     
     public String critica(){
-        clienteEJB.comentar(cliente, libro, texto);
+        clienteEJB.comentar(cliente, libro, textocritica);
         return "detallesLibro";
     }
     
@@ -269,6 +269,15 @@ public class SesionMB implements Serializable {
         return carroCompra;
     }
 
+    public String gettextocritica() {
+        return textocritica;
+    }
+
+    public void settextocritica(String textocritica) {
+        this.textocritica = textocritica;
+    }
+
+    
     public String getLibroBusqueda() {
         return libroBusqueda;
     }
@@ -276,6 +285,8 @@ public class SesionMB implements Serializable {
     public void setLibroBusqueda(String libroBusqueda) {
         this.libroBusqueda = libroBusqueda;
     }
+    
+    
 
     public Busqueda getBusqueda() {
         return busqueda;
@@ -283,6 +294,20 @@ public class SesionMB implements Serializable {
 
     public void setBusqueda(Busqueda busqueda) {
         this.busqueda = busqueda;
+    }
+
+    /**
+     * @return the critica
+     */
+    public Critica getCritica() {
+        return critica;
+    }
+
+    /**
+     * @param critica the critica to set
+     */
+    public void setCritica(Critica critica) {
+        this.critica = critica;
     }
     
 }

@@ -77,8 +77,15 @@ public class ClienteEJB {
     }
     
     public void comentar(Cliente cliente, Libro libro, String texto){
-        Critica critica= new Critica();
-        critica.setTexto(cliente.getNombre()+": "+ texto);
+        Critica c= new Critica();
+        c.setCliente(cliente);
+        c.setLibro(libro);
+        c.setTexto(texto);
+        libro.addCritica(c);
+        cliente.addCritica(c);
+        em.merge(libro);
+        em.merge(cliente);
+        //criticas.add(c);
     }
     
 

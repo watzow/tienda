@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Cliente implements Serializable {
 
+    
+
     private static final long serialVersionUID = 1L;
     private String nombre;
     private String mail;
@@ -32,7 +34,15 @@ public class Cliente implements Serializable {
     private List<Critica> criticas = new ArrayList();
     private List<LibroVendido> libros=new ArrayList();
     
+  
+    public List<LibroVendido> getLibros() {
+        return libros;
+    }
+
     
+    public void setLibros(List<LibroVendido> libros) {
+        this.libros = libros;
+    }
     public List<Critica> getCriticas() {
         return criticas;
     }
@@ -49,7 +59,10 @@ public class Cliente implements Serializable {
     public void setLogin(String login) {
         this.login = login;
     }
-
+    public void addCritica(Critica c){
+        criticas.add(c);
+        
+    }  
     public String getNombre() {
         return nombre;
     }

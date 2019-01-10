@@ -115,7 +115,10 @@ public class Libro implements Serializable {
     public float getPrecio() {
         return precio;
     }
-
+    public void addCritica(Critica c){
+        criticas.add(c);
+        
+    }  
     public void setPrecio(float precio) {
         this.precio = precio;
     }
