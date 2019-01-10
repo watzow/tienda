@@ -125,8 +125,7 @@ public class SesionMB implements Serializable {
             return ("detallesLibro");
         }
         
-        return "detallesLibro";
-    }
+    }         
     
     public String confirmaPedido() {
         carroCompraEJB.confirmaPedido(cliente,carroCompra);
