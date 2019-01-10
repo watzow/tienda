@@ -119,6 +119,12 @@ public class SesionMB implements Serializable {
     
     public String critica(){
         clienteEJB.comentar(cliente, libro, textocritica);
+        if (textocritica.equals("none")) {
+            return "";
+        } else {
+            return ("detallesLibro");
+        }
+        
         return "detallesLibro";
     }
     
