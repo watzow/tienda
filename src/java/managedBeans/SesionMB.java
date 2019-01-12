@@ -116,7 +116,10 @@ public class SesionMB implements Serializable {
     }
     
     public String critica(){
-                
+        
+        if (!clienteEJB.checkVendido(libro)){
+            return "criticaIncorrecta";
+        }
         if(textocritica.equals("") || textocritica==null){
             return "";
         }

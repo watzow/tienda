@@ -86,7 +86,7 @@ public class ClienteEJB {
         em.persist(c);
         em.merge(libro);
         em.merge(cliente);
-        //criticas.add(c);
+        
     }
     
 

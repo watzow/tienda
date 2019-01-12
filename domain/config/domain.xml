@@ -477,9 +477,11 @@
   <applications>
     <application context-root="/proyectoIST" object-type="user" name="proyectoIST" directory-deployed="true" location="file:/C:/Users/celia/Desktop/proyectoIST/build/web/">
       <property name="archiveType" value="war"></property>
+      <property name="org.glassfish.ejb.startup.keepstate" value="true"></property>
       <property name="appLocation" value="file:/C:/Users/celia/Desktop/proyectoIST/build/web/"></property>
       <property name="org.glassfish.ejb.container.application_unique_id" value="101399253424472064"></property>
       <property name="defaultAppName" value="web"></property>
+      <property name="keepSessions" value="true"></property>
       <module name="proyectoIST">
         <engine sniffer="ejb"></engine>
         <engine sniffer="security"></engine>
