@@ -20,7 +20,10 @@
             <h:form>           
                 <h:panelGrid columns="2" cellspacing="20"> 
                     <h:outputText value="Critica:" />
-                    <h:inputText value="#{sesionMB.textocritica}" maxlength="500" size="30"/>     
+                    <h:inputText value="#{sesionMB.textocritica}" maxlength="500" size="30"/>  
+                    <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Confirmar" action="#{sesionMB.critica()}" /><br></br>
+                    <h:commandButton  style="width: 100%; text-align: center; margin-top: 2px; margin-bottom: 2px;" value="Cancelar" action="detallesLibro" /><br></br>
+                  
                 </h:panelGrid>
             <br/>
             <br/>
