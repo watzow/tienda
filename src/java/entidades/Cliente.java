@@ -114,4 +114,8 @@ public class Cliente implements Serializable {
     public boolean isHayPedidos() {
         return !pedidos.isEmpty();
     }
+    
+    public boolean isHayCriticas() {
+        return !criticas.isEmpty();
+    }
 }

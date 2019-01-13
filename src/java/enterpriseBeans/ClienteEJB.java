@@ -80,7 +80,6 @@ public class ClienteEJB {
     
     public void comentar(Cliente cliente, Libro libro, String texto){
         Critica c= new Critica();
-        GregorianCalendar calendar = new GregorianCalendar();
         c.setCliente(cliente);
         c.setLibro(libro);
         c.setTexto(texto);
@@ -92,9 +91,7 @@ public class ClienteEJB {
         
     }
     
-
-    
-
+   
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
             return "El nombre no puede estar en blanco";
