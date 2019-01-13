@@ -164,7 +164,9 @@ public class Libro implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    public boolean isHayCriticas() {
+        return !criticas.isEmpty();
+    }
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

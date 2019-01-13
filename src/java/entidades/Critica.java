@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 public class Critica implements Serializable {
 
     private static long serialVersionUID = 1L;
-    private String texto;
+    private String texto;    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -48,7 +48,7 @@ public class Critica implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;   
     }
-    
+       
 }
 
 

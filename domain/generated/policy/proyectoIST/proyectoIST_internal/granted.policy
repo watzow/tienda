@@ -1,4 +1,4 @@
-/* AUTOMATICALLY GENERATED ON Sat Jan 12 11:11:13 CET 2019*/
+/* AUTOMATICALLY GENERATED ON Sun Jan 13 13:59:47 CET 2019*/
 /* DO NOT EDIT */
 
 grant {
@@ -10,15 +10,15 @@ grant {
   permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", "confirmaPedido,Local,entidades.Cliente,POJOs.CarroCompra";
   permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "checkVendido,Local,entidades.Libro";
   permission javax.security.jacc.EJBMethodPermission "ClienteEJB", "login,Local,java.lang.String,java.lang.String";
-  permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", ",Local";
   permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "buscarLibro,Local,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", ",Local";
   permission javax.security.jacc.EJBMethodPermission "CarroCompraEJB", "eliminaPedido,Local,entidades.Cliente,entidades.Pedido";
   permission javax.security.jacc.EJBMethodPermission "CatalogoEJB", "todosLosLibros,Local,";
 };
 
 grant      principal * * {
   permission javax.security.jacc.EJBRoleRefPermission "CarroCompraEJB", "**";
-  permission javax.security.jacc.EJBRoleRefPermission "ClienteEJB", "**";
   permission javax.security.jacc.EJBRoleRefPermission "CatalogoEJB", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "ClienteEJB", "**";
 };
 

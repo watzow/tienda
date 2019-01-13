@@ -33,8 +33,9 @@
                         <br/>  
                         <br/>
                         <h:commandButton rendered="#{sesionMB.libro.disponible}" value="Poner en el carro" action="#{sesionMB.poneEnCarro(sesionMB.libro)}"/>
-                        <h:commandButton rendered="#{sesionMB.logged and !sesionMB.librocomprado}" value="Añadir critica" action="escribirCritica"/>
-                   
+                        <h:commandButton rendered="#{sesionMB.logged}" value="Añadir critica" action="escribirCritica"/>
+                        <h:commandButton value="Ver criticas" action="listaCriticas"/>
+                       
                     </f:facet>
                 </h:panelGrid>                
                 <br/>

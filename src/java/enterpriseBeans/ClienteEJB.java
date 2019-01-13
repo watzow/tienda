@@ -5,6 +5,8 @@ import entidades.Grupo;
 import entidades.Libro;
 import entidades.LibroVendido;
 import entidades.Critica;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -78,6 +80,7 @@ public class ClienteEJB {
     
     public void comentar(Cliente cliente, Libro libro, String texto){
         Critica c= new Critica();
+        GregorianCalendar calendar = new GregorianCalendar();
         c.setCliente(cliente);
         c.setLibro(libro);
         c.setTexto(texto);
