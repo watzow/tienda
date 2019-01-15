@@ -34,12 +34,18 @@ public class Cliente implements Serializable {
     private List<Critica> criticas = new ArrayList();
     private List<LibroVendido> libros=new ArrayList();
     
-  
+    public boolean checkVendido(Libro lib){
+        for(LibroVendido libV : libros){
+            if(libV.getLibro().equals(lib)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public List<LibroVendido> getLibros() {
         return libros;
     }
-    
-    
     public void setLibros(List<LibroVendido> libros) {
         this.libros = libros;
     }
