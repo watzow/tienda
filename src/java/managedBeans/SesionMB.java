@@ -111,15 +111,15 @@ public class SesionMB implements Serializable {
         return "listaTemas";
     }
     
-    public boolean librocomprado(){
-        return clienteEJB.checkVendido(libro);
+    /*public boolean librocomprado(Libro libro){
+        return clienteEJB.checkVendido(libro, cliente);
     }
-    
+    */
     public String critica(){
        
-        if (!clienteEJB.checkVendido(libro)){
+        /*if (!clienteEJB.checkVendido(libro,cliente)){
             return "criticaIncorrecta";
-        }
+        }*/
         if(textocritica.equals("") || textocritica==null){
             return "";
         }

@@ -36,6 +36,7 @@ public class CarroCompraEJB {
             libroVendido.setImporte(libroEnCarro.getSubTotal());
             libroVendido.setPedido(pedido);
             pedido.addLibro(libroVendido);
+            cliente.addLibro(libroVendido);
         }
         pedido.setImporte(carroCompra.getTotal());
         pedido.setEstado("pendiente");
