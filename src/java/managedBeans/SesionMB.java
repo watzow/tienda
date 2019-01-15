@@ -6,8 +6,8 @@ import enterpriseBeans.CarroCompraEJB;
 import enterpriseBeans.CatalogoEJB;
 import enterpriseBeans.ClienteEJB;
 import entidades.Cliente;
+import entidades.Critica;
 import entidades.Libro;
-import static entidades.LibroVendido_.pedido;
 import entidades.Pedido;
 import entidades.Tema;
 import java.io.Serializable;
@@ -43,6 +43,8 @@ public class SesionMB implements Serializable {
     private String direccion_edit;
     private String password_edit;
     private String password2_edit;
+    
+    private String textocritica;
     
     @EJB
     private CatalogoEJB catalogoEJB;
@@ -108,7 +110,23 @@ public class SesionMB implements Serializable {
         carroCompra.vacia();
         return "listaTemas";
     }
-
+    
+    public boolean librocomprado(){
+        return clienteEJB.checkVendido(libro);
+    }
+    
+    public String critica(){
+       
+        if (!clienteEJB.checkVendido(libro)){
+            return "criticaIncorrecta";
+        }
+        if(textocritica.equals("") || textocritica==null){
+            return "";
+        }
+        clienteEJB.comentar(cliente, libro, textocritica);
+        return "detallesLibro";
+    }
+                     
     public String confirmaPedido() {
         carroCompraEJB.confirmaPedido(cliente,carroCompra);
         return "listaPedidos";
@@ -208,12 +226,14 @@ public class SesionMB implements Serializable {
         return nombre_edit;
     }
 
+
     public void setNombre_edit(String nombre_edit) {
         this.nombre_edit = nombre_edit;
     }
     public String getPassword_edit() {
         return password_edit;
     }
+  
 
     public void setPassword_edit(String password_edit) {
         this.password_edit = password_edit;
@@ -254,6 +274,16 @@ public class SesionMB implements Serializable {
         return carroCompra;
     }
 
+    public String getTextocritica() {
+        return textocritica;
+    }
+
+    public void setTextocritica(String textocritica) {
+        this.textocritica = textocritica;
+    }
+
+   
+    
     public String getLibroBusqueda() {
         return libroBusqueda;
     }
@@ -261,6 +291,8 @@ public class SesionMB implements Serializable {
     public void setLibroBusqueda(String libroBusqueda) {
         this.libroBusqueda = libroBusqueda;
     }
+    
+    
 
     public Busqueda getBusqueda() {
         return busqueda;
@@ -269,5 +301,7 @@ public class SesionMB implements Serializable {
     public void setBusqueda(Busqueda busqueda) {
         this.busqueda = busqueda;
     }
+
     
+
 }

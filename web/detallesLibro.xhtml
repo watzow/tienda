@@ -33,6 +33,9 @@
                         <br/>  
                         <br/>
                         <h:commandButton rendered="#{sesionMB.libro.disponible}" value="Poner en el carro" action="#{sesionMB.poneEnCarro(sesionMB.libro)}"/>
+                        <h:commandButton rendered="#{sesionMB.logged}" value="Añadir critica" action="escribirCritica"/>
+                        <h:commandButton value="Ver criticas" action="listaCriticas"/>
+                       
                     </f:facet>
                 </h:panelGrid>                
                 <br/>
@@ -47,7 +50,7 @@
                     <h:commandLink value="Catalogo" action="listaTemas"/>   
                     <h:commandLink value="Libros de #{sesionMB.tema.nombre}" action="listaLibros"/>    
                     <h:commandLink value="Busqueda"  action="busquedaLibro"/>
-                    <h:commandLink value="Inicio"  action="inicio"/>  
+                    <h:commandLink value="Inicio"  action="inicio"/> 
                     <h:commandLink rendered="#{sesionMB.logged}" value="Logout"  action="#{sesionMB.logout()}"/>  
                     <h:commandLink rendered="#{!sesionMB.logged}" value="Login"  action="login"/>  
                 </h:panelGrid> 

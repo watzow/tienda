@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Cliente implements Serializable {
 
+    
+
     private static final long serialVersionUID = 1L;
     private String nombre;
     private String mail;
@@ -29,7 +31,27 @@ public class Cliente implements Serializable {
     private List<Grupo> grupos = new ArrayList();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList();
-    private List<Critica> criticas = new ArrayList<>();
+    private List<Critica> criticas = new ArrayList();
+    private List<LibroVendido> libros=new ArrayList();
+    
+  
+    public List<LibroVendido> getLibros() {
+        return libros;
+    }
+
+    
+    public void setLibros(List<LibroVendido> libros) {
+        this.libros = libros;
+    }
+    public List<Critica> getCriticas() {
+        return criticas;
+    }
+
+    
+    public void setCriticas(List<Critica> criticas) {
+        this.criticas = criticas;
+    }
+    
     public String getLogin() {
         return login;
     }
@@ -37,7 +59,10 @@ public class Cliente implements Serializable {
     public void setLogin(String login) {
         this.login = login;
     }
-
+    public void addCritica(Critica c){
+        criticas.add(c);
+        
+    }  
     public String getNombre() {
         return nombre;
     }
@@ -88,5 +113,9 @@ public class Cliente implements Serializable {
 
     public boolean isHayPedidos() {
         return !pedidos.isEmpty();
+    }
+    
+    public boolean isHayCriticas() {
+        return !criticas.isEmpty();
     }
 }

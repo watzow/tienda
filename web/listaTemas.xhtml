@@ -29,6 +29,8 @@
                 </h:panelGrid>
                 <h:panelGrid columns="3" cellspacing="30">
                     <h:commandLink rendered="#{sesionMB.logged}" value="Ver pedidos"  action="listaPedidos"/>                         
+                    <h:commandLink rendered="#{sesionMB.logged}" value="Ver mis criticas"  action="criticasCliente"/>                        
+                   
                     <h:commandLink   value="Inicio"  action="inicio"/>   
                     <h:commandLink rendered="#{!sesionMB.logged}" value="Login"  action="login"/>     
                     <h:commandLink rendered="#{sesionMB.logged}" value="Logout"  action="#{sesionMB.logout()}"/>                 

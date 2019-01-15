@@ -37,6 +37,17 @@ public class Libro implements Serializable {
     @Column(nullable = true)
     private String foto;
 
+    
+    
+    public List<Critica> getCriticas() {
+        return criticas;
+    }
+
+    
+    public void setCriticas(List<Critica> criticas) {
+        this.criticas = criticas;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -104,7 +115,10 @@ public class Libro implements Serializable {
     public float getPrecio() {
         return precio;
     }
-
+    public void addCritica(Critica c){
+        criticas.add(c);
+        
+    }  
     public void setPrecio(float precio) {
         this.precio = precio;
     }
@@ -150,7 +164,9 @@ public class Libro implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    public boolean isHayCriticas() {
+        return !criticas.isEmpty();
+    }
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
