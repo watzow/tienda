@@ -38,7 +38,7 @@ public class Cliente implements Serializable {
     public List<LibroVendido> getLibros() {
         return libros;
     }
-
+    
     
     public void setLibros(List<LibroVendido> libros) {
         this.libros = libros;
@@ -46,7 +46,9 @@ public class Cliente implements Serializable {
     public List<Critica> getCriticas() {
         return criticas;
     }
-
+    public void addLibro(LibroVendido libro) {
+        libros.add(libro);
+    }
     
     public void setCriticas(List<Critica> criticas) {
         this.criticas = criticas;

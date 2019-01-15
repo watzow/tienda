@@ -3,10 +3,8 @@ package enterpriseBeans;
 import entidades.Cliente;
 import entidades.Grupo;
 import entidades.Libro;
-import entidades.LibroVendido;
 import entidades.Critica;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import entidades.LibroVendido;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -71,12 +69,12 @@ public class ClienteEJB {
         return cliente;
     }    
     
-    public boolean checkVendido(Libro libro){
-        TypedQuery<LibroVendido> query1 = em.createQuery("SELECT c FROM LibroVendido c ", LibroVendido.class);
-        int indice= query1.getResultList().indexOf(libro);
-
-        return indice!=-1;
-    }
+    //public boolean checkVendido(Libro libro, Cliente cliente){
+  
+        //TypedQuery<LibroVendido> query1 = em.createQuery("SELECT c FROM LibroVendido c ", LibroVendido.class);
+        //int indice= query1.getResultList().indexOf(libro);
+        //return indice!=-1;
+    //}
     
     public void comentar(Cliente cliente, Libro libro, String texto){
         Critica c= new Critica();
