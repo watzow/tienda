@@ -6,8 +6,8 @@ import enterpriseBeans.CarroCompraEJB;
 import enterpriseBeans.CatalogoEJB;
 import enterpriseBeans.ClienteEJB;
 import entidades.Cliente;
+import entidades.Critica;
 import entidades.Libro;
-import static entidades.LibroVendido_.pedido;
 import entidades.Pedido;
 import entidades.Tema;
 import java.io.Serializable;
@@ -37,6 +37,15 @@ public class SesionMB implements Serializable {
     private String password;
     private String password2;
     private String loginTime;
+    
+    private String nombre_edit;
+    private String mail_edit;
+    private String direccion_edit;
+    private String password_edit;
+    private String password2_edit;
+    
+    private String textocritica;
+    
     @EJB
     private CatalogoEJB catalogoEJB;
     private Tema tema;
@@ -67,10 +76,6 @@ public class SesionMB implements Serializable {
         cliente = null;
         return "inicio";
     }
-    public String editarperfil(){
-        clienteEJB.editaperfil(cliente, nombre, direccion, mail, login, password, password2);
-        return "inicio";
-    }
     public String registra() {
         errorMessage = clienteEJB.registra(nombre, direccion, mail, login, password, password2);
         if (errorMessage.equals("none")) {
@@ -79,7 +84,19 @@ public class SesionMB implements Serializable {
             return ("registroError");
         }
     }
-
+    public String edita(){
+        Cliente c=clienteEJB.editaperfil(cliente, nombre_edit, direccion_edit, mail_edit, password_edit, password2_edit);
+        if(c!=null){
+            cliente=c;
+            nombre= nombre_edit;
+            mail= mail_edit;
+            direccion= direccion_edit;
+            password= password_edit;
+            password2= password2_edit;
+            return "edicionCorrecta";
+        }
+        return "edicionIncorrecta";
+}
     public boolean isLogged() {
         return cliente != null;
     }
@@ -93,7 +110,23 @@ public class SesionMB implements Serializable {
         carroCompra.vacia();
         return "listaTemas";
     }
-
+    
+    public boolean librocomprado(){
+        return clienteEJB.checkVendido(libro);
+    }
+    
+    public String critica(){
+       
+        if (!clienteEJB.checkVendido(libro)){
+            return "criticaIncorrecta";
+        }
+        if(textocritica.equals("") || textocritica==null){
+            return "";
+        }
+        clienteEJB.comentar(cliente, libro, textocritica);
+        return "detallesLibro";
+    }
+                     
     public String confirmaPedido() {
         carroCompraEJB.confirmaPedido(cliente,carroCompra);
         return "listaPedidos";
@@ -185,11 +218,50 @@ public class SesionMB implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    
     public String getLoginTime() {
         return loginTime;
     }
+    public String getNombre_edit() {
+        return nombre_edit;
+    }
 
+
+    public void setNombre_edit(String nombre_edit) {
+        this.nombre_edit = nombre_edit;
+    }
+    public String getPassword_edit() {
+        return password_edit;
+    }
+  
+
+    public void setPassword_edit(String password_edit) {
+        this.password_edit = password_edit;
+    }
+
+    public String getPassword2_edit() {
+        return password2_edit;
+    }
+
+    public void setPassword2_edit(String password2_edit) {
+        this.password2_edit = password2_edit;
+    }
+
+    public String getMail_edit() {
+        return mail_edit;
+    }
+
+    public void setMail_edit(String mail_edit) {
+        this.mail_edit = mail_edit;
+    }
+
+    public String getDireccion_edit() {
+        return direccion_edit;
+    }
+
+    public void setDireccion_edit(String direccion_edit) {
+        this.direccion_edit = direccion_edit;
+    }
     public Tema getTema() {
         return tema;
     }
@@ -202,6 +274,16 @@ public class SesionMB implements Serializable {
         return carroCompra;
     }
 
+    public String getTextocritica() {
+        return textocritica;
+    }
+
+    public void setTextocritica(String textocritica) {
+        this.textocritica = textocritica;
+    }
+
+   
+    
     public String getLibroBusqueda() {
         return libroBusqueda;
     }
@@ -209,6 +291,8 @@ public class SesionMB implements Serializable {
     public void setLibroBusqueda(String libroBusqueda) {
         this.libroBusqueda = libroBusqueda;
     }
+    
+    
 
     public Busqueda getBusqueda() {
         return busqueda;
@@ -217,5 +301,7 @@ public class SesionMB implements Serializable {
     public void setBusqueda(Busqueda busqueda) {
         this.busqueda = busqueda;
     }
+
     
+
 }

@@ -2,6 +2,11 @@ package enterpriseBeans;
 
 import entidades.Cliente;
 import entidades.Grupo;
+import entidades.Libro;
+import entidades.LibroVendido;
+import entidades.Critica;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -42,21 +47,13 @@ public class ClienteEJB {
         } catch (ServletException e) {
         }
     }
-    
-    private boolean checkUsuario(String login){
-        TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.login='" + login + "'", Cliente.class);
-        return tquery.getResultList().isEmpty() && login.indexOf(" ")==-1;
-    }
     private boolean checkMail(String mail){
         TypedQuery<Cliente> tquery= em.createQuery("SELECT c FROM Cliente c WHERE c.mail='" + mail + "'", Cliente.class);
         return tquery.getResultList().isEmpty() && mail.indexOf(" ")==-1;
     }
-    public String editaperfil(Cliente cliente, String nombre, String direccion, String mail, String login, String password, String password2) {
-        if(checkUsuario(login)){
-            return "edicionincorrecta";
-        }
-        if(checkMail(mail)){
-            return "edicionincorrecta";
+    public Cliente editaperfil(Cliente cliente, String nombre, String direccion, String mail, String password, String password2) {
+        if(!checkMail(mail) || !password.equals(password2)){
+            return null;
         }
         if (!nombre.equals("") && nombre!=null) {                
             cliente.setNombre(nombre);
@@ -64,17 +61,37 @@ public class ClienteEJB {
         if (!direccion.equals("") && direccion!=null){
             cliente.setDireccion(direccion);
         }
-        if (!login.equals("") && login!=null){
-            cliente.setLogin(login);
-        }
         if (!mail.equals("") && mail!=null){
             cliente.setMail(mail);
         }    
         if (!password.equals("") && password!=null){
             cliente.setPwd(DigestUtils.sha512Hex(password));
         }
-        return "edicionincorrecta";
+        em.merge(cliente);
+        return cliente;
     }    
+    
+    public boolean checkVendido(Libro libro){
+        TypedQuery<LibroVendido> query1 = em.createQuery("SELECT c FROM LibroVendido c ", LibroVendido.class);
+        int indice= query1.getResultList().indexOf(libro);
+
+        return indice!=-1;
+    }
+    
+    public void comentar(Cliente cliente, Libro libro, String texto){
+        Critica c= new Critica();
+        c.setCliente(cliente);
+        c.setLibro(libro);
+        c.setTexto(texto);
+        libro.addCritica(c);
+        cliente.addCritica(c);
+        em.persist(c);
+        em.merge(libro);
+        em.merge(cliente);
+        
+    }
+    
+   
     public String registra(String nombre, String direccion, String mail, String login, String password, String password2) {
         if (nombre.isEmpty()) {
             return "El nombre no puede estar en blanco";

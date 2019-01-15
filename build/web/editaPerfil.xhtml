@@ -18,20 +18,18 @@
             <h:form>           
                 <h:panelGrid columns="2" cellspacing="20"> 
                     <h:outputText value="Nombre:" />
-                    <h:inputText  value="#{sesionMB.nombre}" maxlength="30" size="30"/>                  
+                    <h:inputText  value="#{sesionMB.nombre_edit}" maxlength="30" size="30"/>                  
                     <h:outputText value="Dirección:" />
-                    <h:inputText  value="#{sesionMB.direccion}" maxlength="30" size="30"/>                   
+                    <h:inputText  value="#{sesionMB.direccion_edit}" maxlength="30" size="30"/>                   
                     <h:outputText value="Mail:" />
-                    <h:inputText  value="#{sesionMB.mail}" maxlength="30" size="30"/>                                            
-                    <h:outputText value="Login:" />
-                    <h:inputText  value="#{sesionMB.login}" maxlength="30" size="30"/>                                            
+                    <h:inputText  value="#{sesionMB.mail_edit}" maxlength="30" size="30"/>                                                                                   
                     <h:outputText value="Contraseña:" />
-                    <h:inputSecret   value="#{sesionMB.password}" maxlength="30" size="30"/>              
+                    <h:inputSecret   value="#{sesionMB.password_edit}" maxlength="30" size="30"/>              
                     <h:outputText value="Contraseña:" />
-                    <h:inputSecret  value="#{sesionMB.password2}" maxlength="30" size="30"/>               
+                    <h:inputSecret  value="#{sesionMB.password2_edit}" maxlength="30" size="30"/>               
                 </h:panelGrid>     
                 <h:panelGrid columns="2" cellspacing="30">
-                    <h:commandButton  value="Guardar" action="#{sesionMB.editarperfil}" />                    
+                    <h:commandButton  value="Guardar" action="#{sesionMB.edita}" />                    
                     <h:commandButton   value="Cancelar"  action="inicio"/>                                 
                 </h:panelGrid>                               
             </h:form>
@@ -40,4 +38,3 @@
         </center>
     </h:body>
 </html>
-

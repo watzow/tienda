@@ -1,7 +1,7 @@
-Sat Dec 29 04:56:57 CET 2018 : Servidor de red Apache Derby: Se ha iniciado 10.10.2.0 - (1582446) y está listo para aceptar las conexiones en el puerto 1527
+Fri Jan 04 16:19:34 CET 2019 : Servidor de red Apache Derby: Se ha iniciado 10.10.2.0 - (1582446) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Sat Dec 29 05:02:15 CET 2018:
- Iniciando instancia a816c00e-0167-f81b-9426-000003c178f2 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+Fri Jan 04 16:19:38 CET 2019:
+ Iniciando instancia a816c00e-0168-1972-b5cf-000003c178f2 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
 en el directorio de base de datos C:\Users\celia\Desktop\proyectoIST\ist con el cargador de clases sun.misc.Launcher$AppClassLoader@1d44bcfa
 Cargado desde file:/C:/Program%20Files/glassfish-4.1.1/javadb/lib/derby.jar
 java.vendor=Oracle Corporation

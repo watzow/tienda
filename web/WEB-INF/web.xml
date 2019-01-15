@@ -21,6 +21,9 @@
     <welcome-file-list>
         <welcome-file>faces/inicio.xhtml</welcome-file>
     </welcome-file-list>
+    <login-config>   
+        <auth-method>BASIC</auth-method>
+    </login-config>  
     <security-role>
         <description/>
         <role-name>clientes</role-name>
